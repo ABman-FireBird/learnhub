@@ -4,12 +4,12 @@ import Footer from './components/Footer.jsx';
 
 function App() {
   return (
-    <div className="app">
-    
+    <div className="app flex flex-col min-h-screen">
       <Navbar />
-      <Outlet />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
       <Footer />
-    
     </div>
   );
 }
