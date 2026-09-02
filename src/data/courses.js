@@ -10,7 +10,8 @@ const courses = [
         students: 1200,
         image: "https://placehold.co/600x400/png",
         level: "Beginner",
-        duration: "6 weeks"
+        duration: "6 weeks",
+        learningHours: 40
     },
     {
         id: "2",
@@ -23,7 +24,8 @@ const courses = [
         students: 1000,
         image: "https://placehold.co/600x400/png",
         level: "Intermediate",
-        duration: "12 weeks"
+        duration: "12 weeks",
+        learningHours: 60
     },
     {
         id: "3",
@@ -36,7 +38,9 @@ const courses = [
         students: 1300,
         image: "https://placehold.co/600x400/png",
         level: "Advanced",
-        duration: "8 weeks"
+        duration: "8 weeks",
+        learningHours: 50
+        
     },
     {
         id: "4",
@@ -49,7 +53,8 @@ const courses = [
         students: 1500,
         image: "https://placehold.co/600x400/png",
         level: "Beginner",
-        duration: "5 weeks"
+        duration: "5 weeks",
+        learningHours: 30
     },
     {
         id: "5",
@@ -62,7 +67,8 @@ const courses = [
         students: 1800,
         image: "https://placehold.co/600x400/png",
         level: "Beginner",
-        duration: "4 weeks"
+        duration: "4 weeks",
+        learningHours: 20
     },
     {
         id: "6",
@@ -75,7 +81,8 @@ const courses = [
         students: 800,
         image: "https://placehold.co/600x400/png",
         level: "Beginner",
-        duration: "6 weeks"
+        duration: "6 weeks",
+        learningHours: 35
     },
     {
         id: "7",
@@ -88,7 +95,8 @@ const courses = [
         students: 1800,
         image: "https://placehold.co/600x400/png",
         level: "Intermediate",
-        duration: "6 weeks"
+        duration: "6 weeks",
+        learningHours: 40
     },
     {
         id: "8",
@@ -101,7 +109,8 @@ const courses = [
         students: 1100,
         image: "https://placehold.co/600x400/png",
         level: "Beginner",
-        duration: "5 weeks"
+        duration: "5 weeks",
+        learningHours: 30
     },
     {
         id: "9",
@@ -114,7 +123,8 @@ const courses = [
         students: 1150,
         image: "https://placehold.co/600x400/png",
         level: "Beginner",
-        duration: "9 weeks"
+        duration: "9 weeks",
+        learningHours: 45
     },
     {
         id: "10",
@@ -127,7 +137,8 @@ const courses = [
         students: 1200,
         image: "https://placehold.co/600x400/png",
         level: "Advanced",
-        duration: "4 weeks"
+        duration: "4 weeks",
+        learningHours: 25
     },
 ];
 

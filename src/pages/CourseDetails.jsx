@@ -1,12 +1,17 @@
 import { useParams } from 'react-router';
 import courses from '../data/courses';
 import Button from '../components/Button';
+import { useOutletContext } from 'react-router';
 
 
 const CourseDetails = () => {
     
     const { id } = useParams();
     
+    const { enrolledCourses, enrollInCourse } = useOutletContext(); 
+
+    console.log(enrolledCourses);
+
     const course = courses.find(course => course.id === id);
 
     if (!course) {
@@ -27,7 +32,8 @@ const CourseDetails = () => {
                 <p>{course.students} students</p>
                 <p>{course.level}</p>
                 <p>{course.duration}</p>
-                <Button text="Enroll Now" onClick={() => alert('Enrolled')} className="bg-amber-500 text-white hover:bg-amber-600"/>
+                <p>{course.learningHours} learning Hours</p>
+                <Button text="Enroll Now" onClick={() => enrollInCourse(course)} className="bg-amber-500 text-white hover:bg-amber-600"/>
             </div>
         </div>
     );
