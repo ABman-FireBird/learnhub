@@ -19,13 +19,20 @@ function App() {
   });
   const [isloaded, setIsLoaded] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode');
+    return saved ? JSON.parse(saved) : false;
+  });
+
 
   useEffect(() => {
     const savedCourses = localStorage.getItem('enrolledCourses');
     const savedProfile = localStorage.getItem('profile');
+    const savedActivity = localStorage.getItem('recentActivity');
 
     if (savedCourses) setEnrolledCourses(JSON.parse(savedCourses));
     if (savedProfile) setProfile(JSON.parse(savedProfile));
+    if (savedActivity) setRecentActivity(JSON.parse(savedActivity));
 
     setIsLoaded(true);
 
@@ -39,6 +46,12 @@ function App() {
        
   }, [enrolledCourses, isloaded]);
 
+  useEffect(() => {
+    if (isloaded){
+      localStorage.setItem('recentActivity', JSON.stringify(recentActivity));
+    }
+}, [recentActivity, isloaded]);
+
 
   useEffect(() => {
     if (isloaded){
@@ -47,11 +60,19 @@ function App() {
     
   }, [profile, isloaded]);
 
+  useEffect(() => {
+    if (isDarkMode){
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
 
   const enrollInCourse = (course) => {
       if (!enrolledCourses.some(enrolledCourse => enrolledCourse.id === course.id)){
         setEnrolledCourses([...enrolledCourses, {...course, progress: 0}]);
-        setRecentActivity([...recentActivity, `Enrolled in ${course.title}`]);
+        setRecentActivity(prev => [...prev, `Enrolled in ${course.title}`]);      
       } 
   }
   
@@ -59,7 +80,15 @@ function App() {
     setEnrolledCourses(enrolledCourses.map(course => (
         course.id === courseId ? {...course, progress: newProgress} : course
     )));
-  }
+
+    const course = enrolledCourses.find(c => c.id === courseId);
+    if (course) {
+      const message = newProgress >= 100
+        ? `Completed "${course.title}"`
+        : `Continued "${course.title}" — now ${newProgress}%`;
+      setRecentActivity(prev => [...prev, message]);
+    }
+}
 
   const showToast = (message) => {
     setToastMessage(message);
@@ -75,8 +104,8 @@ function App() {
   }, [toastMessage]);
 
   return (
-    <div className="app flex flex-col min-h-screen">
-      <Navbar />
+    <div className="app flex flex-col min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
       <main className="flex-grow">
         <Outlet context={{enrolledCourses, enrollInCourse, recentActivity, updateProgress, profile, setProfile, showToast}}/>
       </main>

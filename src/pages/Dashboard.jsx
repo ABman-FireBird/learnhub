@@ -15,21 +15,21 @@ const Dashboard = () => {
     return (
         <div className="p-8 flex flex-col gap-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-gray-100 p-4 rounded-lg text-center">
+                <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
                     <p className="text-2xl font-bold">{enrolledCourses.length}</p>
-                    <p className="text-gray-600">Enrolled Courses</p>
+                    <p className="text-gray-600 dark:text-gray-300">Enrolled Courses</p>
                 </div>
-                <div className="bg-gray-100 p-4 rounded-lg text-center">
+                <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
                     <p className="text-2xl font-bold">{completedCount}</p>
-                    <p className="text-gray-600">Completed Courses</p>
+                    <p className="text-gray-600 dark:text-gray-300">Completed Courses</p>
                 </div>
-                <div className="bg-gray-100 p-4 rounded-lg text-center">
+                <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
                     <p className="text-2xl font-bold">{totalHours}</p>
-                    <p className="text-gray-600">Learning Hours</p>
+                    <p className="text-gray-600 dark:text-gray-300">Learning Hours</p>
                 </div>
-                <div className="bg-gray-100 p-4 rounded-lg text-center">
+                <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
                     <p className="text-2xl font-bold">{averageCount.toFixed(2)}%</p>
-                    <p className="text-gray-600">Overall Progress</p>
+                    <p className="text-gray-600 dark:text-gray-300">Overall Progress</p>
                 </div>
             </div>
 

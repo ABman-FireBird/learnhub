@@ -15,23 +15,36 @@ const Profile = () => {
             {isEditing ? (
                 <div className="flex flex-col gap-2">
                     <form>
-                        <label htmlFor="name">Name</label>
-                        <input type="text" id="name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="Enter Name"/>
+
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="name">Name</label>
+                            <input type="text" id="name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="Enter Name" className="border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md p-2 w-full"/>
+                        </div>
                         
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="Enter email"/>
-                        
-                        <label htmlFor="uni">University</label>
-                        <input type="text" id="uni" value={formData.university} onChange={(e) => setFormData({...formData, university: e.target.value})} placeholder="Enter University Name"/>
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" id="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="Enter email" className="border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md p-2 w-full"/>
+                        </div>
 
-                        <label htmlFor="department">Department</label>
-                        <input type="text" id="department" value={formData.department} onChange={(e) => setFormData({...formData, department: e.target.value})} placeholder="Enter Department name"/>
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="uni">University</label>
+                            <input type="text" id="uni" value={formData.university} onChange={(e) => setFormData({...formData, university: e.target.value})} placeholder="Enter University Name" className="border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md p-2 w-full"/>
+                        </div> 
 
-                        <label htmlFor="semester">Semester</label>
-                        <input type="text" id="semester" value={formData.semester} onChange={(e) => setFormData({...formData, semester: e.target.value})} placeholder="Enter Semester"/>
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="department">Department</label>
+                            <input type="text" id="department" value={formData.department} onChange={(e) => setFormData({...formData, department: e.target.value})} placeholder="Enter Department name" className="border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md p-2 w-full"/>
+                        </div>
 
-                        <label htmlFor="bio">Enter Bio</label>
-                        <textarea id="bio" value={formData.bio} onChange={(e) => setFormData({...formData, bio: e.target.value})} placeholder="Enter About YourSelf"></textarea>
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="semester">Semester</label>
+                            <input type="text" id="semester" value={formData.semester} onChange={(e) => setFormData({...formData, semester: e.target.value})} placeholder="Enter Semester" className="border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md p-2 w-full"/>
+                        </div>
+
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="bio">Enter Bio</label>
+                            <textarea id="bio" value={formData.bio} onChange={(e) => setFormData({...formData, bio: e.target.value})} placeholder="Enter About YourSelf" className="border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md p-2 w-full"></textarea>
+                        </div>
 
                         <Button 
                             onClick={() => {

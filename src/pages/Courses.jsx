@@ -41,6 +41,12 @@ const Courses = () => {
                 {filteredCourses.map(course => (
                     <CourseCard key={course.id} course={course} /> 
                 ))}
+                
+                {filteredCourses.length === 0 && (
+                    <p className="col-span-full text-center text-gray-500 dark:text-gray-400 py-8">
+                        No courses match your search. Try different filters.
+                    </p>
+                )}
             </div>
         </div>
     );
