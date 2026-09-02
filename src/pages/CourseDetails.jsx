@@ -8,7 +8,7 @@ const CourseDetails = () => {
     
     const { id } = useParams();
     
-    const { enrolledCourses, enrollInCourse } = useOutletContext(); 
+    const { enrolledCourses, enrollInCourse, showToast } = useOutletContext(); 
 
     console.log(enrolledCourses);
 
@@ -33,7 +33,15 @@ const CourseDetails = () => {
                 <p className="text-lg">{course.level}</p>
                 <p className="text-lg">{course.duration}</p>
                 <p className="text-lg">{course.learningHours} learning Hours</p>
-                <Button text="Enroll Now" onClick={() => enrollInCourse(course)} className="bg-amber-500 text-white hover:bg-amber-600 rounded shadow"/>
+                <Button 
+                    text="Enroll Now" 
+                    onClick={() => {
+                        enrollInCourse(course)
+                        showToast(`Successfully enrolled in ${course.title}`);    
+                        }
+                    } 
+                    className="bg-amber-500 text-white hover:bg-amber-600 rounded shadow"
+                />
             </div>
         </div>
     );

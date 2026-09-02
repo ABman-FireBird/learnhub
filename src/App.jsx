@@ -18,6 +18,7 @@ function App() {
     bio: "Passionate about web development and always eager to learn new technologies.",
   });
   const [isloaded, setIsLoaded] = useState(false);
+  const [toastMessage, setToastMessage] = useState(null);
 
   useEffect(() => {
     const savedCourses = localStorage.getItem('enrolledCourses');
@@ -60,13 +61,33 @@ function App() {
     )));
   }
 
+  const showToast = (message) => {
+    setToastMessage(message);
+  }
+
+  useEffect( () => {
+      if (toastMessage){
+        const timer = setTimeout(() => {
+          setToastMessage(null);
+        }, 3000);
+        return () => clearTimeout(timer);
+      }
+  }, [toastMessage]);
+
   return (
     <div className="app flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <Outlet context={{enrolledCourses, enrollInCourse, recentActivity, updateProgress, profile, setProfile}}/>
+        <Outlet context={{enrolledCourses, enrollInCourse, recentActivity, updateProgress, profile, setProfile, showToast}}/>
       </main>
       <Footer />
+
+      {toastMessage && (
+        <div className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow">
+          {toastMessage}
+        </div>
+      )}
+
     </div>
   );
 }

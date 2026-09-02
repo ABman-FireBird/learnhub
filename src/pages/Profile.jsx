@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const Profile = () => {
     
-    const { profile, setProfile } = useOutletContext();
+    const { profile, setProfile, showToast } = useOutletContext();
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState(profile);
     
@@ -40,7 +40,8 @@ const Profile = () => {
                                     return;
                                 }
                                 setProfile(formData); 
-                                setIsEditing(false)
+                                setIsEditing(false);
+                                showToast('Profile updated Successfully');
                             }}
                             text="Save" 
                             type="button" 
